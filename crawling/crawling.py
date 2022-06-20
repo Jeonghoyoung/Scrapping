@@ -20,17 +20,19 @@ def main():
     soup = BeautifulSoup(soc, 'html.parser')
     a = soup.find_all(class_='se-module se-module-text')
 
+
     txt_list = []
     for i in tqdm(a):
         #         print(i.get_text())
         txt = i.get_text().strip().replace('\u200b', '')
         txt_list.append(txt)
+    print(txt_list)
 
     driver.close()
     # 텍스트 파일로 다운로드.
-    with open('crawling_data.txt', 'w') as f:
-
-        f.write('\n'.join(txt_list))
+    # with open('crawling_data.txt', 'w') as f:
+    #
+    #     f.write('\n'.join(txt_list))
 
 if __name__ == '__main__':
     main()
